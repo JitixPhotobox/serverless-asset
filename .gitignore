@@ -3,3 +3,4 @@ node_modules/*
 .history/
 .serverless/
 .DS_STORE
+.vscode/
