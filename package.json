@@ -43,14 +43,12 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "cross-env NODE_ENV=development webpack --config webpack.config.js --watch --mode development",
     "cleanup": "rimraf lib/",
     "deploy:dev": "sls deploy -v --stage development",
     "build": "npm run cleanup && cross-env NODE_ENV=production webpack --config webpack.config.js --mode development",
-    "lint": "eslint src/toolkit.js",
     "lint": "eslint .",
-    "test": "jest",
     "test:coverage": "jest --coverage"
   },
   "author": "",
