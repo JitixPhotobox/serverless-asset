@@ -1,3 +1,4 @@
+
 const upload = require('../src/functions/upload');
 
 const event = {
@@ -15,9 +16,10 @@ const event = {
 };
 
 const context = {};
-process.env.BUCKET_NAME = 'ecom-design-interim-bucket-development';
+process.env.S3_BUCKET = 'jeremie-asset-service-xoxo';
 
 upload.handler(event, context, (err, data) => {
+    console.log('fdfdsfsd');
     if (err) {
         console.error(err);
     }

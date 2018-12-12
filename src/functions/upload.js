@@ -25,6 +25,5 @@ module.exports.handler = async (event, context, callback) => {
     };
 
     const s3Response = await s3.upload(params).promise();
-
     return done(null, s3Response, callback);
 }
