@@ -1,5 +1,5 @@
 {
-  "name": "jeremie-toolkit-service",
+  "name": "jeremie-asset-service",
   "version": "1.0.0",
   "description": "",
   "main": "toolkit.js",
@@ -50,7 +50,7 @@
     "dev": "cross-env NODE_ENV=development webpack --config webpack.config.js --watch --mode development",
     "cleanup": "rimraf lib/",
     "deploy:dev": "sls deploy -v --stage development",
-    "build": "npm run cleanup && cross-env NODE_ENV=production webpack --config webpack.config.js --mode development",
+    "build": "yarn run cleanup && cross-env NODE_ENV=production webpack --config webpack.config.js --mode development",
     "lint": "eslint .",
     "test:coverage": "jest --coverage"
   },

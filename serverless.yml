@@ -1,4 +1,4 @@
-service: jeremie-asset-service-xoxo
+service: jeremie-asset-service
 
 custom:
   webpack:
@@ -84,6 +84,5 @@ functions:
           path: /metadata
           method: post
 plugins:
-  # - serverless-aws-documentation
   - serverless-reqvalidator-plugin
   - serverless-webpack
