@@ -1,9 +1,10 @@
-This project requires node v10.6.0
+This project requires `node v8.10.0`, `yarn`
 
+To build this project:
 `yarn install`
 
 Start this project locally :
-`node ./local/toolkit-put.js`
+`node ./local/upload.js`
 
 Deploy this project remotely using sls :
 `yarn deploy:dev`
