@@ -4,9 +4,8 @@ const uuid = require('uuid');
 AWS.config.update({ region: 'eu-west-1' });
 
 const dynamodb = new AWS.DynamoDB();
-const client = new AWS.DynamoDB.DocumentClient({ service: dynamodb });
-
-const done = (err, res, callback) => {
+const done = (err, res) => {
+    console.log(res);
     const result = {
         statusCode: err ? '400' : '200',
         body: err ? err.message : JSON.stringify(res),
@@ -15,10 +14,14 @@ const done = (err, res, callback) => {
         }
     };
 
-    callback(null, result);
+    console.log(result);
+
+    return result;
 };
 
-module.exports.handler = async (event, context, callback) => {
+module.exports.handler = async event => {
+    const client = new AWS.DynamoDB.DocumentClient({ service: dynamodb });
+
     const body = JSON.parse(event.body);
     const Item = {
         filename: body.filename,
@@ -26,6 +29,5 @@ module.exports.handler = async (event, context, callback) => {
     }
 
     await client.put({ "TableName": process.env.DYNAMODB_TABLE, Item }).promise();
-
-    done(null, Item, callback);
+    return done(null, Item);
 }

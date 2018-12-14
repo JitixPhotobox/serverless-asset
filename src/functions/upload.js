@@ -3,7 +3,7 @@ const AWS = require('aws-sdk');
 AWS.config.update({ region: 'eu-west-1' });
 const s3 = new AWS.S3();
 
-const done = (err, res, callback) => {
+const done = (err, res) => {
     const result = {
         statusCode: err ? '400' : '200',
         body: err ? err.message : JSON.stringify(res),
@@ -12,10 +12,10 @@ const done = (err, res, callback) => {
         }
     };
 
-    callback(null, result);
+    return result;
 };
 
-module.exports.handler = async (event, context, callback) => {
+module.exports.handler = async event => {
     const body = JSON.parse(event.body);
     const params = {
         Bucket: process.env.S3_BUCKET,
@@ -25,5 +25,5 @@ module.exports.handler = async (event, context, callback) => {
     };
 
     const s3Response = await s3.upload(params).promise();
-    return done(null, s3Response, callback);
+    return done(null, s3Response);
 }

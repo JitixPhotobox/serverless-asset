@@ -4,7 +4,7 @@ const AWS = require('aws-sdk');
 AWS.config.update({ region: 'eu-west-1' });
 const s3 = new AWS.S3();
 
-const done = (err, res, callback) => {
+const done = (err, res) => {
   const result = {
     statusCode: err ? '400' : '200',
     body: err ? err.message : JSON.stringify(res),
@@ -13,14 +13,14 @@ const done = (err, res, callback) => {
     }
   };
 
-  callback(null, result);
+  return result;
 };
 
-module.exports.handler = async (event, context, callback) => {
+module.exports.handler = async event => {
   const originalKey = event.Records[0].s3.object.key;
 
   if (originalKey.includes('resized')) {
-    return done({ "message": "image is resized" }, {}, callback);
+    return done({ "message": "image is resized" });
   }
 
   const originalPhoto = await s3.getObject({ Bucket: process.env.S3_BUCKET, Key: originalKey }).promise();
@@ -35,5 +35,5 @@ module.exports.handler = async (event, context, callback) => {
     Key: `resized/${originalKey}`,
   }).promise();
 
-  return done(null, {}, callback);
+  return done();
 }
