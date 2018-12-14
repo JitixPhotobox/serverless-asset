@@ -1,12 +1,11 @@
-const AWS = require('aws-sdk-mock');
 
-// Mocked event.
+const uuid = require('uuid');
+const database = require('../services/database');
+
 const metadataEvent = require('../../fixtures/event/metadata');
 
 // Test subject.
 const { handler } = require('./metadata');
-const database = require('../services/database');
-const uuid = require('uuid');
 
 jest.mock('../services/database');
 jest.mock('uuid');

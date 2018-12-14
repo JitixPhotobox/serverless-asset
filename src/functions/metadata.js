@@ -3,6 +3,7 @@ const uuid = require('uuid');
 
 AWS.config.update({ region: 'eu-west-1' });
 const database = require('../services/database');
+
 const done = (err, res) => {
     const result = {
         statusCode: err ? '400' : '200',
