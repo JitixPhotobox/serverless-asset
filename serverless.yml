@@ -63,7 +63,7 @@ resources:
 
 functions:
   resize:
-    handler: src/functions/resize.andler
+    handler: src/functions/resize.handler
     events:
       - s3:
           bucket: ${self:provider.environment.S3_BUCKET}

@@ -1,28 +1,29 @@
 {
-  "parser": "babel-eslint",
+  "parser": "eslint",
   "extends": [
     "airbnb",
     "prettier"
   ],
   "settings": {
     "import/resolver": {
-    "webpack": {
-      "config": "./webpack.config.js"
+      "webpack": {
+        "config": "./webpack.config.js"
       }
     }
   },
   "rules": {
     "comma-dangle": 0,
     "import/order": [
-      "error", {
+      "error",
+      {
         "groups": [
-        "builtin",
-        "external",
-        "internal",
-        "parent",
-        "sibling",
-        "index"
-      ]
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ]
       }
     ],
     "jest/no-disabled-tests": "warn",

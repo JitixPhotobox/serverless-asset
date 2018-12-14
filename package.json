@@ -37,14 +37,22 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack --config webpack.config.js --watch --mode development",
-    "cleanup": "rimraf lib/",
-    "deploy:dev": "sls deploy -v --stage development",
-    "build:dev": "npm run cleanup && cross-env NODE_ENV=production webpack --config webpack.config.js --mode development",
-    "build:prod": "npm run cleanup && cross-env NODE_ENV=production webpack --config webpack.config.js --mode development",
+    "deploy:sandbox": "sls deploy -v --stage sandbox",
+    "deploy:dev": "sls deploy -v --stage dev",
+    "deploy:production": "sls deploy -v --stage production",
+    "build": "rimraf node_modules/sharp/vendor && npm rebuild --arch=x64 --arch=x64 --platform=linux --target=8.10.0 sharp",
     "lint": "eslint .",
     "test": "jest",
     "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "roots": [
+      "./src/"
+    ],
+    "verbose": true,
+    "testMatch": [
+      "**/*test.js"
+    ]
   },
   "author": "",
   "target": "node",
